@@ -12,7 +12,7 @@ public class MainClass {
 
 //  2. Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
         System.out.println("\nУрок 2. Основные конструкции. Задание #2");
-        System.out.println(Arrays.toString(tofillArray((new int[8]), new int[]{0, 3, 6, 9, 12, 15, 18, 21})));
+        System.out.println(Arrays.toString(toFillArray((new int[8]))));
 
 //  3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
         System.out.println("\nУрок 2. Основные конструкции. Задание #3");
@@ -30,28 +30,34 @@ public class MainClass {
 //  7. **** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным), при этом метод должен сместить все элементы массива на n позиций. Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами. Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1] при n = -2 (на два влево) -> [ 6, 1, 3, 5 ]. При каком n в какую сторону сдвиг можете выбирать сами.
 //        Если выполнение задач вызывает трудности, можете обратиться к последней странице методического пособия. Для задач со * не нужно искать решение в интернете, иначе вы теряете весь смысл их выполнения.
         System.out.println("\nУрок 2. Основные конструкции. Задание #7");
-        System.out.println(Arrays.toString(offsetArrayByN(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 3)));
+        System.out.println(Arrays.toString(offsetArrayByN(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, -4)));
     }
 
     private static int[] offsetArrayByN(int[] array, int offset) {
-        int lastValue = 0;
-        for (int i = 0; i < offset; i++) {
-            lastValue = array[array.length - 1];
-            int bufferValue = 0;
-            int nextValue = 0;
-            for (int j = 0; j < array.length - 1; j++) {
-                if (j == 0) {
-                    bufferValue = array[j + 1];
-                    array[j + 1] = array[j];
-                } else {
-                    nextValue = array[j + 1];
-                    array[j + 1] = bufferValue;
-                    bufferValue = nextValue;
+
+        if (offset > 0) {
+            for (int i = 0; i < offset; i++) {
+                int lastValue = array[array.length - 1];
+                int firstValue = array[0];
+                for (int j = 1; j < array.length; j++) {
+
+                    array[array.length - j] = array[array.length - j - 1];
                 }
-                array[i] = lastValue;
+                array[1] = firstValue;
+                array[0] = lastValue;
+            }
+        }
+        if (offset < 0) {
+            for (int i = 0; i < offset * -1; i++) {
+                int firstValue = array[0];
+                for (int j = 0; j < array.length - 1; j++) {
+                    array[j] = array[j + 1];
+                }
+                array[array.length - 1] = firstValue;
             }
 
         }
+
         return array;
     }
 
@@ -109,9 +115,9 @@ public class MainClass {
         return array;
     }
 
-    private static int[] tofillArray(int[] newArray, int[] arrayWithEements) {
+    private static int[] toFillArray(int[] newArray) {
         for (int i = 0; i < newArray.length; i++) {
-            newArray[i] = arrayWithEements[i];
+            newArray[i] = i * 3;
         }
         return newArray;
     }
