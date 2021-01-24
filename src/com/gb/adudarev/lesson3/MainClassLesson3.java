@@ -7,6 +7,7 @@ public class MainClassLesson3 {
     public static void main(String[] args) {
 
         System.out.println("Урок 3. Практика. Задание #1");
+
         int min = 0;
         int max = 10;
         String helloText = " Приветствую тебя мой дорогой друг! ";
@@ -14,9 +15,11 @@ public class MainClassLesson3 {
                 " очень интересную игру \"Отгадай число от " + min + " до " + max + "\" ";
         String dangerText = " Но помни, у тебя всего 3 попытки. Удачи! ";
         System.out.println(getPrettyFooter(new String[]{helloText, ruleText, dangerText}));
-        // guessTheNumberGame(min, max);
+        guessTheNumberGame(min, max);
+
 
         System.out.println("\nУрок 3. Практика. Задание #2");
+
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
                 "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
                 "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
