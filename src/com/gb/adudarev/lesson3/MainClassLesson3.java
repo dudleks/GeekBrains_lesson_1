@@ -14,7 +14,7 @@ public class MainClassLesson3 {
                 " очень интересную игру \"Отгадай число от " + min + " до " + max + "\" ";
         String dangerText = " Но помни, у тебя всего 3 попытки. Удачи! ";
         System.out.println(getPrettyFooter(new String[]{helloText, ruleText, dangerText}));
-        guessTheNumberGame(min, max);
+        // guessTheNumberGame(min, max);
 
         System.out.println("\nУрок 3. Практика. Задание #2");
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
@@ -31,23 +31,25 @@ public class MainClassLesson3 {
 
     private static void guessTheWordGame(String[] words) {
         String userWorld;
-        String specialSymbols = "###############";
+        String specialSymbol = "#";
+        String secretString = "###############";
         Scanner sc = new Scanner(System.in);
         String guessedWord = getRandomWordFromArray(getRandomNumber(words.length), words);
+        System.out.println(guessedWord);
         do {
             String finalStr = "";
             System.out.println(">> Пожалуста введи слово и нажми клавишу \"Enter\"");
             userWorld = sc.next().toLowerCase();
-            int maxLength = getWordDiffLength(userWorld, guessedWord);
+            int maxLength = getWordsDiffLength(userWorld, guessedWord);
             for (int i = 0; i < maxLength; i++) {
                 if (userWorld.charAt(i) == guessedWord.charAt(i)) {
                     finalStr += String.valueOf(guessedWord.charAt(i));
                 } else {
-                    break;
+                    finalStr += specialSymbol;
                 }
             }
             if (!userWorld.equals(guessedWord)) {
-                System.out.println("Не угадал, попробуй еще раз!\n" + finalStr + specialSymbols);
+                System.out.println("Не угадал, попробуй еще раз!\n" + finalStr + secretString);
             }
 
         } while (!userWorld.equals(guessedWord));
@@ -56,7 +58,7 @@ public class MainClassLesson3 {
         sc.close();
     }
 
-    private static int getWordDiffLength(String userWorld, String guessedWord) {
+    private static int getWordsDiffLength(String userWorld, String guessedWord) {
         return userWorld.length() < guessedWord.length() ? userWorld.length() : guessedWord.length();
     }
 
