@@ -14,7 +14,7 @@ public class MainClassLesson4 {
     */
     public static char[][] mainArray;
     public static final int SIZE = 5;
-    public static final int DOTS_TO_WIN = 3;
+    public static final int DOTS_TO_WIN = 4;
 
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
