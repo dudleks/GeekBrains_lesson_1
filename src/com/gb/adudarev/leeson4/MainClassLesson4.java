@@ -1,6 +1,5 @@
 package com.gb.adudarev.leeson4;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,108 +12,125 @@ public class MainClassLesson4 {
         * Попробовать переписать логику проверки победы, чтобы она работала для поля 5х5 и количества фишек 4. Очень желательно не делать это просто набором условий для каждой из возможных ситуаций;
         *** Доработать искусственный интеллект, чтобы он мог блокировать ходы игрока.
     */
-    public static char[][] map;
+    public static char[][] mainArray;
     public static final int SIZE = 5;
-    public static final int DOTS_TO_WIN = 4;
+    public static final int DOTS_TO_WIN = 5;
 
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
 
-    public static void main(String[] args) {
-        initMap();
-        //printMap();
-        while (true) {
-            map[0][0] = DOT_X;
-            map[1][0] = DOT_X;
-            map[1][1] = DOT_X;
-            map[2][3] = DOT_X;
-            map[3][2] = DOT_X;
-            map[4][4] = DOT_X;
-            printMap();
-            checkWin(DOT_EMPTY);
-        }
+    public static Scanner sc = new Scanner(System.in);
+    private static Random rand = new Random();
 
-    /*    while (true) {
+
+    public static void main(String[] args) {
+        initArray();
+        printArray();
+
+        while (true) {
             humanTurn();
-            printMap();
-            if (checkWin(DOT_X)) {
-                System.out.println("Победил человек");
+            printArray();
+            if (checkWinner(DOT_X)) {
+                System.out.println("Поздравляю вы победили!");
                 break;
             }
-            if (isMapFull()) {
+            if (isArrayFull()) {
                 System.out.println("Ничья");
                 break;
             }
             aiTurn();
-            printMap();
-            if (checkWin(DOT_O)) {
-                System.out.println("Победил Искуственный Интеллект");
+            printArray();
+            if (checkWinner(DOT_O)) {
+                System.out.println("Победил компьютер!");
                 break;
             }
-            if (isMapFull()) {
+            if (isArrayFull()) {
                 System.out.println("Ничья");
                 break;
             }
         }
-        System.out.println("Игра закончена");*/
+        System.out.println("Игра закончена");
     }
 
-    public static boolean isMapFull() {
+    private static boolean checkWinner(char symbol) {
+        int endOffset = mainArray.length - DOTS_TO_WIN;
+
+        for (int rowOffset = 0; rowOffset <= endOffset; rowOffset++) {
+
+            if (checkWinDiagonals(symbol, rowOffset)) {
+                return true;
+            }
+
+            for (int columnOffset = 0; columnOffset <= endOffset; columnOffset++) {
+
+                if (checkWinLines(symbol, rowOffset, columnOffset)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean isArrayFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == DOT_EMPTY) return false;
+                if (mainArray[i][j] == DOT_EMPTY) return false;
             }
         }
         return true;
     }
 
-    public static boolean checkWin(char symbol) {
+    public static boolean checkWinLines(char symbol, int rowOffset, int columnOffset) {
+        int rowCounter = 0;
+        int columnCounter = 0;
 
-            for (int i = 0; i < map.length; i++) {
-                boolean res = true;
-                for (int j = 1; j < map.length && res; j++)
-                    res = map[j][i] == map[0][i];
-                if (res)
-                    return true;
-            }
-            return false;
-        }
+        int rowArrayLength = rowOffset + DOTS_TO_WIN;
+        int columnArrayLength = columnOffset + DOTS_TO_WIN;
 
-
-    public static boolean checkWinColumn(char symbol) {
-        for (int i = 0; i < map.length; i++) {
-            int lineCount = 0;
-            for (int j = 0; j < map.length - 1; j++) {
-                if (map[j][i] == symbol && map[j + 1][i] == symbol) {
-                    lineCount++;
+        for (int rowLine = rowOffset; rowLine < rowArrayLength; rowLine++) {
+            for (int columnLine = 0; columnLine < columnArrayLength; columnLine++) {
+                if (mainArray[rowLine][columnLine] == symbol) {
+                    rowCounter++;
+                } else {
+                    rowCounter = 0;
                 }
-                if (lineCount == DOTS_TO_WIN - 1) {
-                    return true;
+
+                if (mainArray[columnLine][rowLine] == symbol) {
+                    columnCounter++;
+                } else {
+                    columnCounter = 0;
                 }
             }
-        }
-
-        return false;
-    }
-
-    private static boolean checkWinRows(char symbol) {
-        for (int i = 0; i < map.length; i++) {
-            int lineCount = 0;
-            for (int j = 0; j < map.length - 1; j++) {
-                if (map[i][j] == symbol && map[i][j + 1] == symbol) {
-                    lineCount++;
-                }
-                if (lineCount == DOTS_TO_WIN - 1) {
-                    return true;
-                }
-            }
+            if (columnCounter == DOTS_TO_WIN || rowCounter == DOTS_TO_WIN)
+                return true;
         }
         return false;
     }
 
+    public static boolean checkWinDiagonals(char symbol, int rowOffset) {
+        int lrDiagonalCounter = 0;
+        int rlDiagonalCounte = 0;
 
-    public static Random rand = new Random();
+        int rowArrayLength = DOTS_TO_WIN + rowOffset;
+
+        for (int rowLine = rowOffset; rowLine < rowArrayLength; rowLine++) {
+            if (mainArray[rowLine][rowLine] == symbol) {
+                lrDiagonalCounter++;
+            } else {
+                lrDiagonalCounter = 0;
+            }
+
+            if (mainArray[rowLine][mainArray.length - rowLine - 1] == symbol) {
+                rlDiagonalCounte++;
+            } else {
+                rlDiagonalCounte = 0;
+            }
+            if (rlDiagonalCounte == DOTS_TO_WIN || lrDiagonalCounter == DOTS_TO_WIN)
+                return true;
+        }
+        return false;
+    }
 
     public static void aiTurn() {
         int x, y;
@@ -123,10 +139,9 @@ public class MainClassLesson4 {
             y = rand.nextInt(SIZE);
         } while (!isCellValid(x, y));
         System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
-        map[y][x] = DOT_O;
+        mainArray[y][x] = DOT_O;
     }
 
-    public static Scanner sc = new Scanner(System.in);
 
     public static void humanTurn() {
         int x, y;
@@ -135,25 +150,29 @@ public class MainClassLesson4 {
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
         } while (!isCellValid(x, y));
-        map[y][x] = DOT_X;
+        mainArray[x][y] = DOT_X;
     }
 
     public static boolean isCellValid(int x, int y) {
-        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return false;
-        if (map[y][x] == DOT_EMPTY) return true;
+        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
+            return false;
+        }
+        if (mainArray[x][y] == DOT_EMPTY) {
+            return true;
+        }
         return false;
     }
 
-    public static void initMap() {
-        map = new char[SIZE][SIZE];
+    public static void initArray() {
+        mainArray = new char[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                map[i][j] = DOT_EMPTY;
+                mainArray[i][j] = DOT_EMPTY;
             }
         }
     }
 
-    public static void printMap() {
+    public static void printArray() {
         for (int i = 0; i <= SIZE; i++) {
             if (i != 0) {
                 System.out.print(i + " ");
@@ -161,11 +180,14 @@ public class MainClassLesson4 {
                 System.out.print("  ");
             }
         }
+
         System.out.println();
+        String specialSymbol = " ";
         for (int i = 0; i < SIZE; i++) {
-            System.out.print((i + 1) + " ");
+            System.out.print(i + 1 + specialSymbol);
+
             for (int j = 0; j < SIZE; j++) {
-                System.out.print(map[i][j] + " ");
+                System.out.print(mainArray[i][j] + specialSymbol);
             }
             System.out.println();
         }
