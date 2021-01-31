@@ -14,14 +14,14 @@ public class MainClassLesson4 {
     */
     public static char[][] mainArray;
     public static final int SIZE = 5;
-    public static final int DOTS_TO_WIN = 5;
+    public static final int DOTS_TO_WIN = 3;
 
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
 
     public static Scanner sc = new Scanner(System.in);
-    private static Random rand = new Random();
+    private final static Random rand = new Random();
 
 
     public static void main(String[] args) {
@@ -110,7 +110,7 @@ public class MainClassLesson4 {
 
     public static boolean checkWinDiagonals(char symbol, int rowOffset) {
         int lrDiagonalCounter = 0;
-        int rlDiagonalCounte = 0;
+        int rlDiagonalCounter = 0;
 
         int rowArrayLength = DOTS_TO_WIN + rowOffset;
 
@@ -122,11 +122,11 @@ public class MainClassLesson4 {
             }
 
             if (mainArray[rowLine][mainArray.length - rowLine - 1] == symbol) {
-                rlDiagonalCounte++;
+                rlDiagonalCounter++;
             } else {
-                rlDiagonalCounte = 0;
+                rlDiagonalCounter = 0;
             }
-            if (rlDiagonalCounte == DOTS_TO_WIN || lrDiagonalCounter == DOTS_TO_WIN)
+            if (rlDiagonalCounter == DOTS_TO_WIN || lrDiagonalCounter == DOTS_TO_WIN)
                 return true;
         }
         return false;
@@ -137,7 +137,7 @@ public class MainClassLesson4 {
         do {
             x = rand.nextInt(SIZE);
             y = rand.nextInt(SIZE);
-        } while (!isCellValid(x, y));
+        } while (isCellValid(x, y));
         System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
         mainArray[y][x] = DOT_O;
     }
@@ -149,18 +149,15 @@ public class MainClassLesson4 {
             System.out.println("Введите координаты в формате X Y");
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
-        } while (!isCellValid(x, y));
+        } while (isCellValid(x, y));
         mainArray[x][y] = DOT_X;
     }
 
     public static boolean isCellValid(int x, int y) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
-            return false;
-        }
-        if (mainArray[x][y] == DOT_EMPTY) {
             return true;
         }
-        return false;
+        return mainArray[x][y] != DOT_EMPTY;
     }
 
     public static void initArray() {
