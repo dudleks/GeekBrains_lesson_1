@@ -22,36 +22,32 @@ public class Animal {
         this.name = name;
     }
 
-/*    Animal createAnimal(int animalCounter){
-        animalCounter++;
-        return new Animal();
-    }*/
 
     public void run(int length) {
-        if (isLimitAvailable(length, runLengthLimit)) {
+        if (isLimitExist(length, runLengthLimit)) {
             System.out.println(name + " пробежал: " + length + "м");
         } else {
-            System.out.println(name + " не может бежать дальше: " + length + "м");
+            System.out.println(name + " не может бежать дальше: " + runLengthLimit + "м");
         }
     }
 
     public void jump(int height) {
-        if (isLimitAvailable(height, jumpHeightLimit)) {
+        if (isLimitExist(height, jumpHeightLimit)) {
             System.out.println(name + " прыгнул: " + height + "м");
         } else {
-            System.out.println(name + " не может прыгать выше: " + height + "м");
+            System.out.println(name + " не может прыгать выше: " + jumpHeightLimit + "м");
         }
     }
 
     public void swim(int length) {
-        if (isLimitAvailable(length, swimLengthLimit)) {
+        if (isLimitExist(length, swimLengthLimit)) {
             System.out.println(name + " проплыл: " + length + "м");
         } else {
-            System.out.println(name + " не может плыть дальше: " + length + "м");
+            System.out.println(name + " не может плыть дальше: " + swimLengthLimit + "м");
         }
     }
 
-    private boolean isLimitAvailable(int currentValue, int limitValue) {
+    private boolean isLimitExist(int currentValue, int limitValue) {
         return currentValue <= limitValue;
     }
 

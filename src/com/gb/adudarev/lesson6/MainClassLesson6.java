@@ -9,14 +9,26 @@ package com.gb.adudarev.lesson6;
 public class MainClassLesson6 {
     public static void main(String[] args) {
 
-        Cat cat = new Cat(100, 10, "Мурка");
-        cat.run(100);
-        cat.swim(10);
-        cat.jump(5);
+        AnimalCreator animalCreator = new AnimalCreator();
 
-        Dog dog = new Dog(100, 10, 10, "Бобик");
-        dog.run(100);
-        dog.swim(10);
-        dog.jump(5);
+        int animalCount = 5;
+        for (int i = 1; i <= animalCount; i++) {
+            Cat cat = animalCreator.createCat(100, 10, "Мурка" + i);
+            cat.run(10);
+            cat.swim(9);
+            cat.jump(5);
+            System.out.println();
+
+            Dog dog = animalCreator.createDog(200, 1, 10, "Бобик" + i);
+            dog.run(150);
+            dog.swim(10);
+            dog.jump(5);
+            System.out.println();
+        }
+
+        System.out.println("Котов создано: " + animalCreator.getCatCounter());
+        System.out.println("Собак создано: " + animalCreator.getDogCounter());
     }
+
+
 }
