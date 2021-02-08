@@ -7,11 +7,19 @@ public class Plate {
         this.food = food;
     }
 
-    public void decreaseFood(int n) {
-        food -= n;
+    public void decreasedFood(int appetit) {
+        if (!isEnoughFood(appetit)) {
+            System.out.println("Указано неверное значение еды!");
+        }
+        food -= appetit;
     }
 
-    public void info() {
-        System.out.println("plate: " + food);
+    public boolean isEnoughFood(int appetit) {
+        return appetit <= food;
     }
+
+    public void increasedFood(int food) {
+        this.food += food;
+    }
+
 }

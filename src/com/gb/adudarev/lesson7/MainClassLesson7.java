@@ -1,6 +1,5 @@
 package com.gb.adudarev.lesson7;
 
-
 /*
     1. Расширить задачу про котов и тарелки с едой.
     2. Сделать так, чтобы в тарелке с едой не могло получиться отрицательного количества еды (например, в миске 10 еды, а кот пытается покушать 15-20).
@@ -10,13 +9,26 @@ package com.gb.adudarev.lesson7;
     6. Добавить в тарелку метод, с помощью которого можно было бы добавлять еду в тарелку.
 */
 
+import java.util.Random;
+
 public class MainClassLesson7 {
 
     public static void main(String[] args) {
-        Cat cat = new Cat("Barsik", 5);
-        Plate plate = new Plate(100);
-        plate.info();
-        cat.eat(plate);
-        plate.info();
+        Cat[] catsArray = new Cat[5];
+        Plate p = new Plate(20);
+
+        for (int i = 0; i < catsArray.length; i++) {
+            catsArray[i] = new Cat("Baris" + i, new Random().nextInt(100));
+        }
+
+        for (int i = 0; i < catsArray.length; i++) {
+            catsArray[i].eat(p);
+        }
+        System.out.println("---------");
+        p.increasedFood(50);
+
+        for (int i = 0; i < catsArray.length; i++) {
+            catsArray[i].eat(p);
+        }
     }
 }
