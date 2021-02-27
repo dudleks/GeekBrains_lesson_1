@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PhoneBook extends HashMap {
+public class PhoneBook {
 
     private final HashMap<String, Set<Long>> phoneBook = new HashMap<>();
 
@@ -19,4 +19,7 @@ public class PhoneBook extends HashMap {
         return phoneBook.get(name);
     }
 
+    public HashMap<String, Set<Long>> getPhoneBook() {
+        return phoneBook;
+    }
 }
