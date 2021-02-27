@@ -41,9 +41,9 @@ public class MainClassLevel2Lesson3 {
         phoneBook.addElement("Игнат", 78906781234L, 78906781132L, 78906781232L);
         phoneBook.addElement("Степан", 78906781235L);
 
-        System.out.println(phoneBook.getPhones("Игнат"));
-        System.out.println(phoneBook.getPhones("Степан"));
-        System.out.println(phoneBook.getPhones("Гена"));
+        for (Map.Entry<String, Set<Long>> o : phoneBook.getPhoneBook().entrySet()) {
+            System.out.println(phoneBook.getPhones(o.getKey()));
+        }
     }
 
 }
