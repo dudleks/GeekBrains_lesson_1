@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-
 public class Server {
 
     private static final int PORT = 8430;
@@ -23,7 +22,6 @@ public class Server {
 
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-
 
             Thread t = new Thread(() -> {
                 try {

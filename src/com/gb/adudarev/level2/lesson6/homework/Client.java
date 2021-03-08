@@ -1,15 +1,10 @@
 package com.gb.adudarev.level2.lesson6.homework;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.input.KeyCode;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
-
 
 public class Client {
     static final String IP_ADDRESS = "localhost";
