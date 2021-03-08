@@ -1,4 +1,4 @@
-package com.gb.adudarev.level2.lesson6.server;
+package com.gb.adudarev.level2.lesson6.chat.server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -26,8 +26,7 @@ public class ClientHandler {
                             System.out.println("Клиент отключился");
                             break;
                         }
-                        System.out.println("Клиент: " + str);
-                        server.broadCastMsg(str);
+                        server.broadCastMsg("Сервер: " + str);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

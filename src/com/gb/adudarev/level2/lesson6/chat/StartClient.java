@@ -1,4 +1,4 @@
-package com.gb.adudarev.level2.lesson6;
+package com.gb.adudarev.level2.lesson6.chat;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -5,10 +5,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="com.gb.adudarev.level2.lesson6.ui.Controller" prefHeight="400.0" prefWidth="600.0"
+<BorderPane fx:controller="com.gb.adudarev.level2.lesson6.chat.ui.Controller" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@/com/gb/adudarev/level2/lesson6/ui/css/chatStyle.css"/>
+        <URL value="@/com/gb/adudarev/level2/lesson6/chat/ui/css/chatStyle.css"/>
     </stylesheets>
     <bottom>
         <BorderPane BorderPane.alignment="CENTER">

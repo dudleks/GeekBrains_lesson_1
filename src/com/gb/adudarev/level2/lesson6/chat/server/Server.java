@@ -1,13 +1,9 @@
-package com.gb.adudarev.level2.lesson6.server;
+package com.gb.adudarev.level2.lesson6.chat.server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Vector;
 
 public class Server {
