@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gb.adudarev.level2.lesson7.ui.Controller">
+    <stylesheets>
+        <URL value="@/com/gb/adudarev/level2/lesson7/ui/css/chatStyle.css" />
+    </stylesheets>
+    <bottom>
+        <BorderPane fx:id="msgPanel" managed="false" visible="false" BorderPane.alignment="CENTER">
+            <right>
+                <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendMessageButton" text="Отправить" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets right="10.0" />
+                    </BorderPane.margin>
+                </Button>
+            </right>
+            <center>
+                <TextField fx:id="inputField" onAction="#pressEnterKey" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </BorderPane.margin>
+                </TextField>
+            </center>
+            <BorderPane.margin>
+                <Insets bottom="10.0" />
+            </BorderPane.margin>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+        </BorderPane>
+    </bottom>
+    <center>
+        <TextArea fx:id="chatTextArea" editable="false" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+        </TextArea>
+    </center>
+   <top>
+      <BorderPane fx:id="authPanel" managed="true" prefHeight="40.0" prefWidth="200.0" visible="true" BorderPane.alignment="CENTER">
+         <right>
+            <Button mnemonicParsing="false" onAction="#tryToAuth" prefHeight="26.0" prefWidth="99.0" text="Войти" BorderPane.alignment="CENTER" >
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin></Button>
+         </right>
+         <center>
+            <PasswordField fx:id="passwordField" onAction="#tryToAuth" prefWidth="228.0" promptText="Пароль" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </BorderPane.margin></PasswordField>
+         </center>
+         <left>
+            <TextField fx:id="loginField" prefWidth="228.0" promptText="Логин" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </BorderPane.margin></TextField>
+         </left>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </top>
+</BorderPane>
