@@ -8,8 +8,6 @@ import java.net.Socket;
 
 public class ClientHandler {
 
-    private Server server;
-    private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
 
@@ -18,8 +16,6 @@ public class ClientHandler {
 
     public ClientHandler(Server server, Socket socket) {
         try {
-            this.server = server;
-            this.socket = socket;
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
 
@@ -49,7 +45,15 @@ public class ClientHandler {
                             System.out.println("Клиент отключился");
                             break;
                         }
-                        server.broadCastMsg(this, str);
+                        if (str.startsWith("/w")) {
+                            String recipient = str.split(" ", 3)[1];
+                            String text = str.split(" ", 3)[2];
+                            if (recipient != null && text != null) {
+                                server.privateMsg(this, recipient, text);
+                            }
+                        } else {
+                            server.broadCastMsg(this, str);
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

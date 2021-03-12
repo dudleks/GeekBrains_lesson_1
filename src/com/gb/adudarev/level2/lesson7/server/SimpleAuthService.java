@@ -6,7 +6,7 @@ import java.util.List;
 public class SimpleAuthService implements AuthService {
 
 
-    private class UserData {
+    private static class UserData {
         String login;
         String nickName;
         String password;
@@ -25,9 +25,9 @@ public class SimpleAuthService implements AuthService {
         for (int i = 0; i < 10; i++) {
             users.add(new UserData("login" + i, "nickName" + i, "password" + i));
         }
-        users.add(new UserData("asd", "alex", "123"));
-        users.add(new UserData("qwe", "pavel", "123"));
-        users.add(new UserData("zxc", "vladimir", "123"));
+        users.add(new UserData("qqq", "alex", "123"));
+        users.add(new UserData("aaa", "nick", "123"));
+        users.add(new UserData("zzz", "vlad", "123"));
     }
 
     @Override

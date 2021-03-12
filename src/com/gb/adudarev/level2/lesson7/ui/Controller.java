@@ -4,10 +4,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
@@ -34,6 +31,8 @@ public class Controller implements Initializable {
     public TextField loginField;
     @FXML
     public BorderPane msgPanel;
+    @FXML
+    public Label userLoginNick;
 
     private static final String IP_ADDRESS = "localhost";
     public static final int PORT = 8765;
@@ -51,7 +50,9 @@ public class Controller implements Initializable {
         msgPanel.setManaged(authenticated);
         authPanel.setVisible(!authenticated);
         authPanel.setManaged(!authenticated);
-
+        userLoginNick.setVisible(authenticated);
+        userLoginNick.setManaged(authenticated);
+        setAuthLabel();
         if (!authenticated) {
             nickName = "" + authenticated;
         }
@@ -116,10 +117,9 @@ public class Controller implements Initializable {
                         if (str.startsWith("/authok")) {
                             nickName = str.split(" ", 2)[1];
                             setAuthenticated(true);
+                            chatTextArea.appendText(str + "\n");
                             break;
                         }
-                        chatTextArea.appendText(str + "\n");
-
                     }
 
                     while (true) {
@@ -139,5 +139,11 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setAuthLabel() {
+        Platform.runLater(() -> {
+            userLoginNick.setText("Вы вошли как: " + nickName);
+        });
     }
 }

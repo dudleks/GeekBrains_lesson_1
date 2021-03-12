@@ -50,6 +50,18 @@ public class Server {
         }
     }
 
+    public void privateMsg(ClientHandler sender, String recipient, String msg) {
+        for (ClientHandler clientHandler : clientList) {
+            if (clientHandler.equals(sender)) {
+                clientHandler.sendMessage(String.format("%s : %s", "Я > " + recipient, msg));
+            }
+
+            if (clientHandler.getNickName().equals(recipient)) {
+                clientHandler.sendMessage(String.format("%s : %s", sender.getNickName(), msg));
+            }
+        }
+    }
+
     public void subscribe(ClientHandler clientHandler) {
         clientList.add(clientHandler);
     }
