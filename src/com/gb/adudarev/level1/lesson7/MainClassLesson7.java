@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson7;
+package com.gb.adudarev.level1.lesson7;
 
 /*
     1. Расширить задачу про котов и тарелки с едой.

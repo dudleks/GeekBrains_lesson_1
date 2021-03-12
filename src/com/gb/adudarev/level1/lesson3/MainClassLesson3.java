@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson3;
+package com.gb.adudarev.level1.lesson3;
 
 import java.util.Random;
 import java.util.Scanner;

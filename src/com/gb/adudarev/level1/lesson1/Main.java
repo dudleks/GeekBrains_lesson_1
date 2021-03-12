@@ -1,4 +1,4 @@
-package com.gb.dudarev.lesson1;
+package com.gb.adudarev.level1.lesson1;
 
 public class Main {
 

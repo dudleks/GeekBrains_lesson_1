@@ -1,4 +1,4 @@
-package com.gb.adudarev.leeson4;
+package com.gb.adudarev.level1.leeson4;
 
 import java.util.Random;
 import java.util.Scanner;

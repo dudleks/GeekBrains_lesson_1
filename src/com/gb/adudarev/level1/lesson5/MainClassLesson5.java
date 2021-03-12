@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson5;
+package com.gb.adudarev.level1.lesson5;
 
 
 import java.util.Random;

@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson7;
+package com.gb.adudarev.level1.lesson7;
 
 public class Cat {
     private String name;

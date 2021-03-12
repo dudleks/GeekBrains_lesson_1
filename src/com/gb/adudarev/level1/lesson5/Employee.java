@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson5;
+package com.gb.adudarev.level1.lesson5;
 
 //1. Создать класс "Сотрудник" с полями: ФИО, должность, email, телефон, зарплата, возраст.
 public class Employee {

@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson2;
+package com.gb.adudarev.level1.lesson2;
 
 import java.util.Arrays;
 

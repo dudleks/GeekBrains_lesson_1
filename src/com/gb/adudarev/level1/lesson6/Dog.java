@@ -1,4 +1,4 @@
-package com.gb.adudarev.lesson6;
+package com.gb.adudarev.level1.lesson6;
 
 public class Dog extends Animal {
 
