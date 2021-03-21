@@ -1,2 +1,4 @@
 # Project exclude paths
 /out/
+.idea
+GeekBrains_JAVA_adudarev.iml
