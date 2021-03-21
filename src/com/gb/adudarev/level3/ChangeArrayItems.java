@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public class ChangeArrayItems<T extends Collection> {
 
-    private T obj;
+    private final T obj;
 
     public Object[] changeItem(int i, int j) {
         Object[] t = obj.toArray();
