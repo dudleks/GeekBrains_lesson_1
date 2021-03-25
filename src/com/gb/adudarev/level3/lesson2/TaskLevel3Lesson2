@@ -1,0 +1,65 @@
+1. Создать CRUD операции, 1 метод создани таблицы 2 метод для добавления записи 3 метод для получения записи 4 метод для удаления записи 5 удаление таблицы
+2. Добавить в сетевой чат авторизацию через базу данных SQLite.
+
+//
+
+//        try {
+//            ResultSet rs = statement.executeQuery("SELECT * FROM students;");
+//
+//            ResultSetMetaData rsmd = rs.getMetaData();
+//            for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+//                System.out.println(rsmd.getColumnName(i) + " " + rsmd.getColumnTypeName(i));
+//            }
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+
+//    {
+//        try {
+//            int resultUpdate = statement.executeUpdate("INSERT INTO students (name,score) VALUES ('Alexey',50)");
+//            System.out.println(resultUpdate);
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//    }
+//
+
+
+//
+//        try {
+//            long t = System.currentTimeMillis();
+//            // connection.setAutoCommit(false);
+//            for (int i = 0; i < 1000; i++) {
+//                statement.executeUpdate("INSERT INTO students (name,score) VALUES ('Alexey" + i + "'," + i + ")");
+//            }
+//            // connection.setAutoCommit(true);
+//            System.out.println(System.currentTimeMillis() - t);
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+
+//        try {
+//            long t = System.currentTimeMillis();
+//            connection.setAutoCommit(false);
+//            pstmt = connection.prepareStatement("INSERT INTO students (name,score) VALUES (?,?)");
+//            for (int i = 0; i < 1000; i++) {
+//                pstmt.setString(1, "Alexey" + i);
+//                pstmt.setInt(2, i);
+//                pstmt.addBatch();
+//            }
+//            pstmt.executeBatch();
+//            connection.setAutoCommit(true);
+//            System.out.println(System.currentTimeMillis() - t);
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+
+//        try {
+//                statement.executeUpdate("INSERT INTO students (name,score) VALUES ('Alexey1',50)");
+//                Savepoint savepoint = connection.setSavepoint();
+//                statement.executeUpdate("INSERT INTO students (name,score) VALUES ('Alexey2',50)");
+//                connection.rollback(savepoint);
+//                statement.executeUpdate("INSERT INTO students (name,score) VALUES ('Alexey3',50)");
+//                } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//                }
