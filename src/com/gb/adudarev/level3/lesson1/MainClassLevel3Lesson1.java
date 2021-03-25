@@ -1,4 +1,4 @@
-package com.gb.adudarev.level3;
+package com.gb.adudarev.level3.lesson1;
 
 public class MainClassLevel3Lesson1 {
     public static void main(String[] args) {

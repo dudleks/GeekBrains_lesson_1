@@ -1,4 +1,4 @@
-package com.gb.adudarev.level3;
+package com.gb.adudarev.level3.lesson1;
 
 public class Orange extends Fruit {
     public Orange() {
